@@ -5,31 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drapeaux"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Les villes les plus peuplées"
+        Height="450"
+        Width="800">
+
     <Window.Resources>
-      
+        <local:LesVilles x:Key="lesvilles" />
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Label Content="{Binding Path=Nom}" Grid.Column="0"/>
-        <Label Content="{Binding Path=Population}" Grid.Column="1"/>
-        <Label Content="{Binding Path=Pays.Nom}" Grid.Column="2"/>
+
+        <Label Content="Les villes les plus peuplées"
+               Grid.Row="0"
+               FontSize="20"
+               FontWeight="Bold"
+               HorizontalAlignment="Center"
+               Margin="5" />
+
+        <ListView Grid.Row="1"
+                  ItemsSource="{StaticResource lesvilles}"
+                  Margin="10">
+
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Drapeau" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Pays.Drapeau}"
+                                       Width="50"
+                                       Height="30"
+                                       Stretch="Uniform"
+                                       HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Ville"
+                                    DisplayMemberBinding="{Binding Nom}"
+                                    Width="200" />
+
+                    <GridViewColumn Header="Population"
+                                    DisplayMemberBinding="{Binding Population}"
+                                    Width="200" />
+
+                    <GridViewColumn Header="Pays"
+                                    DisplayMemberBinding="{Binding Pays.Nom}"
+                                    Width="200" />
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
     </Grid>
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <StackPanel Orientation="Horizontal">
-                <Image Source="{Binding Path=Pays.Drapeau}" Width="50" Height="30" Margin="5"/>
-                <TextBlock Text="{Binding Path=Nom}" VerticalAlignment="Center" Margin="5"/>
-                <TextBlock Text="{Binding Path=Population}" VerticalAlignment="Center" Margin="5"/>
-            </StackPanel>
-        </DataTemplate>
-    </ListView.ItemTemplate>
 </Window>

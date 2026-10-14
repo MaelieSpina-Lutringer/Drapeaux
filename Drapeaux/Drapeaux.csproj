@@ -95,5 +95,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Bangladesh_flag.png" />
+    <Resource Include="images\bresil_flag.jpg" />
+    <Resource Include="images\China_Flag.jpg" />
+    <Resource Include="images\Egypt_flag.png" />
+    <Resource Include="images\flag_france.jpg" />
+    <Resource Include="images\India_flag.png" />
+    <Resource Include="images\japon_flag.jpg" />
+    <Resource Include="images\mexico_flag.jpg" />
+    <Resource Include="images\red-plus-button.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
