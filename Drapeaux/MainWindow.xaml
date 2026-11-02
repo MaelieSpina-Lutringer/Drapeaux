@@ -3,14 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Drapeaux"
         Title="Les villes les plus peuplées"
-        Height="450"
-        Width="800">
+        Height="618"
+        Width="802">
 
     <Window.Resources>
         <local:LesVilles x:Key="lesvilles"/>
     </Window.Resources>
 
-    <Grid Margin="0,0,0,-62">
+    <Grid Margin="0,0,5,-149" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.165"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -44,7 +52,7 @@
         <ListView x:Name="listeVilles"
                   Grid.Row="2"
                   ItemsSource="{StaticResource lesvilles}"
-                  Margin="10">
+                  Margin="10,10,9,114">
 
             <ListView.View>
                 <GridView>
