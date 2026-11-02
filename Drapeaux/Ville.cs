@@ -2,32 +2,116 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace Drapeaux
 {
-    public class Pays
+    public class Pays : INotifyPropertyChanged
     {
-        public string Nom { get; set; }
-        public string Drapeau { get; set; }
+        private string _nom;
+        private string _drapeau;
+
+        public string Nom
+        {
+            get => _nom;
+            set
+            {
+                if (_nom != value)
+                {
+                    _nom = value;
+                    OnPropertyChanged(nameof(Nom));
+                }
+            }
+        }
+
+        public string Drapeau
+        {
+            get => _drapeau;
+            set
+            {
+                if (_drapeau != value)
+                {
+                    _drapeau = value;
+                    OnPropertyChanged(nameof(Drapeau));
+                }
+            }
+        }
 
         public Pays(string nom, string drapeau = "")
         {
             Nom = nom;
             Drapeau = drapeau;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string nomPropriete)
+        {
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(nomPropriete));
+        }
     }
 
-    public class Ville
+    public class Ville : INotifyPropertyChanged
     {
-        public string Nom { get; set; }
-        public int Population { get; set; }
-        public Pays Pays { get; set; }
+        private string _nom;
+        private int _population;
+        private Pays _pays;
+
+        public string Nom
+        {
+            get => _nom;
+            set
+            {
+                if (_nom != value)
+                {
+                    _nom = value;
+                    OnPropertyChanged(nameof(Nom));
+                }
+            }
+        }
+
+        public int Population
+        {
+            get => _population;
+            set
+            {
+                if (_population != value)
+                {
+                    _population = value;
+                    OnPropertyChanged(nameof(Population));
+                }
+            }
+        }
+
+        public Pays Pays
+        {
+            get => _pays;
+            set
+            {
+                if (_pays != value)
+                {
+                    _pays = value;
+                    OnPropertyChanged(nameof(Pays));
+                }
+            }
+        }
 
         public Ville(string nom, int population, Pays pays)
         {
             Nom = nom;
             Population = population;
             Pays = pays;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string nomPropriete)
+        {
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(nomPropriete));
         }
     }
 

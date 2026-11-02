@@ -52,7 +52,8 @@
         <ListView x:Name="listeVilles"
                   Grid.Row="2"
                   ItemsSource="{StaticResource lesvilles}"
-                  Margin="10,10,9,114">
+                  Margin="10,10,9,114"
+                  MouseDoubleClick="listeVilles_MouseDoubleClick">
 
             <ListView.View>
                 <GridView>
